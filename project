@@ -1,1 +1,66 @@
-print ("hello world")
+
+def check(response):
+      global score
+      while True:
+        if response == "X":
+            print("Good job!") 
+            score += 1
+            break 
+        elif response == "O": 
+           break
+        else: 
+          print ("Invalid entry, try agian.")
+          response = str(input("Enter 'X' for done. Enter 'O' for not done\n"))
+
+def finalMsg (type, score):
+    if score == 3: 
+      print ("Good job, you accomplished all " + type + " activties.")
+    elif score == 0:
+      print ("Do not forget to take care of your health! Lets prioritize " + type + " tomorrow.")
+    else: 
+      print ("You did good today! Lets try to focus more on " + type + " tomorrow!")
+
+
+   
+print ("Wellness Check In!")
+print("Enter 'X' for done. Enter 'O' for not done")
+
+print("Lets start with Mental wellness!")
+score = 0
+check (str(input("Did you journal today? ")))
+check (str(input("Did you meditate today? ")))
+check (str(input("Did you take a break today? ")))
+mentScore = score
+
+score = 0
+print("\nLets check Physical Wellness!")
+check (str(input("Did you go for a walk today? ")))
+check (str(input("Did you go to the gym today? ")))
+check (str(input("Did you do stretches today? ")))
+phyScore = score 
+
+score = 0 
+print ("\nLets check Intellectual Wellness!")
+check (str(input("Did you go for a walk today? ")))
+check (str(input("Did you go to the gym today? ")))
+check (str(input("Did you do stretches today? "))) 
+intScore = score 
+
+print("\nFinal Conclusions:")
+print ("Your Mental Wellness score: " + str(mentScore))
+finalMsg ("Mental Wellness", mentScore)
+
+print ("Your Physical Wellness score: " + str(phyScore))
+finalMsg ("Physical Wellness", phyScore)
+
+print ("Your Intellectual Wellness score: " + str(intScore))
+finalMsg ("Intellectual Wellness", intScore)
+
+
+
+
+
+      
+
+
+
