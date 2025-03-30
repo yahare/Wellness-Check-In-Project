@@ -1,5 +1,6 @@
+import random 
 
-def check(response):
+def check(response): #takes user response and adds to score
       global score
       while True:
         if response == "X":
@@ -10,57 +11,67 @@ def check(response):
            break
         else: 
           print ("Invalid entry, try agian.")
-          response = str(input("Enter 'X' for done. Enter 'O' for not done\n"))
+          response = str(input("Enter 'X' for done. Enter 'O' for not done.\n"))
 
-def finalMsg (type, score):
+def finalMsg(type, score): #evaluates users score and gives message
     if score == 3: 
       print ("Good job, you accomplished all " + type + " activties.")
     elif score == 0:
-      print ("Do not forget to take care of your health! Lets prioritize " + type + " tomorrow.")
+      print ("Do not forget to take care of your health! Lets prioritize " + type + " tomorrow!")
     else: 
-      print ("You did good today! Lets try to focus more on " + type + " tomorrow!")
+      print ("You did good today! Lets pay more attention to " + type + " tomorrow!")
 
+def questions(type): #sets list to give appropriate questions
+    if type == "Mental Wellness": 
+       list = ["Have you felt stressed or irritated during certain events this week? ", "Did you struggle to cope with challenges this week? ", 
+              "Do you have a support group to discuss your current mental health from the week? ", "Have you held a pessimistic perspective on events throughout your week? "]
+    elif type == "Physical Wellness":
+       list = ["Have you exercised this week? ", "Did you consistently get 8-9 hours of sleep this week? ", 
+              "Did you consistently eat a balanced diet this past week? ", "Have you been consuming sufficient amounts of water throughout the week? "]
+    elif type == "Social Wellness":
+        list = ["Have you kept in touch with friends or loved ones this week? ", "Do you feel welcomed in a thoughtful and generous community? ", 
+              "Have you been empathetic towards the people around you? ", "Have you attended LITs General Body Meeting this week?"]
+    return list       
 
-   
+def randCheck(list): #randomly selects 3 questions from list and checks users response
+   for x in range (0,3):
+      randomNum = random.randint(0, len(list) - 1)
+      #print(randomNum)
+      #print(len(list))
+      response = str(input(list[randomNum]))
+      check (response)
+      del list [randomNum]
+
+#Introduction 
 print ("Wellness Check In!")
-print("Enter 'X' for done. Enter 'O' for not done")
+print("Enter 'X' for done. Enter 'O' for not done.")
 
+#Runs functions through mental, physical, and social wellness categories 
 print("Lets start with Mental wellness!")
 score = 0
-check (str(input("Did you journal today? ")))
-check (str(input("Did you meditate today? ")))
-check (str(input("Did you take a break today? ")))
-mentScore = score
+mentalList = questions ("Mental Wellness")
+randCheck(mentalList)
+mentalScore = score 
 
-score = 0
-print("\nLets check Physical Wellness!")
-check (str(input("Did you go for a walk today? ")))
-check (str(input("Did you go to the gym today? ")))
-check (str(input("Did you do stretches today? ")))
-phyScore = score 
-
+print("\nLets check with Physical wellness!")
 score = 0 
-print ("\nLets check Intellectual Wellness!")
-check (str(input("Did you go for a walk today? ")))
-check (str(input("Did you go to the gym today? ")))
-check (str(input("Did you do stretches today? "))) 
-intScore = score 
+physicalList = questions ("Physical Wellness")
+randCheck(physicalList)
+physicalScore = score
 
+print("\nLets check with Social wellness!")
+score = 0 
+socialList = questions ("Social Wellness")
+randCheck(socialList)
+socialScore = score 
+
+#Final results/ analysis 
 print("\nFinal Conclusions:")
-print ("Your Mental Wellness score: " + str(mentScore))
-finalMsg ("Mental Wellness", mentScore)
+print ("Your Mental Wellness score: " + str(mentalScore))
+finalMsg ("Mental Wellness", mentalScore)
 
-print ("Your Physical Wellness score: " + str(phyScore))
-finalMsg ("Physical Wellness", phyScore)
+print ("Your Physical Wellness score: " + str(physicalScore))
+finalMsg ("Physical Wellness", physicalScore)
 
-print ("Your Intellectual Wellness score: " + str(intScore))
-finalMsg ("Intellectual Wellness", intScore)
-
-
-
-
-
-      
-
-
-
+print ("Your Social Wellness score: " + str(socialScore))
+finalMsg ("Social Wellness", socialScore)
