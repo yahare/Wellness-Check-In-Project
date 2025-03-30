@@ -17,17 +17,17 @@ def finalMsg(type, score): #evaluates users score and gives message
     if score == 3: 
       print ("Good job, you accomplished all " + type + " activties.")
     elif score == 0:
-      print ("Do not forget to take care of your health! Lets prioritize " + type + " tomorrow.")
+      print ("Do not forget to take care of your health! Lets prioritize " + type + " tomorrow!")
     else: 
-      print ("You did good today! Lets try to focus more on " + type + " tomorrow!")
+      print ("You did good today! Lets pay more attention to " + type + " tomorrow!")
 
 def questions(type): #sets list to give appropriate questions
     if type == "Mental Wellness": 
        list = ["Have you felt stressed or irritated during certain events this week? ", "Did you struggle to cope with challenges this week? ", 
               "Do you have a support group to discuss your current mental health from the week? ", "Have you held a pessimistic perspective on events throughout your week? "]
     elif type == "Physical Wellness":
-       list = ["Have you exercised this week? ", "Did you sleep 8-9 hours every night for the week? ", 
-              "Have you been eating a balanced diet for the past week? ", "Have you been consuming sufficient amounts of water throughout the week? "]
+       list = ["Have you exercised this week? ", "Did you consistently get 8-9 hours of sleep this week? ", 
+              "Did you consistently eat a balanced diet this past week? ", "Have you been consuming sufficient amounts of water throughout the week? "]
     elif type == "Social Wellness":
         list = ["Have you kept in touch with friends or loved ones this week? ", "Do you feel welcomed in a thoughtful and generous community? ", 
               "Have you been empathetic towards the people around you? ", "Have you attended LITs General Body Meeting this week?"]
@@ -75,4 +75,3 @@ finalMsg ("Physical Wellness", physicalScore)
 
 print ("Your Social Wellness score: " + str(socialScore))
 finalMsg ("Social Wellness", socialScore)
-
